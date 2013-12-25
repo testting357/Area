@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta charset="utf-8">
+		<title>Calculator</title>
+<style>
+@charset "utf-8";
+h3{
+   
+	margin-left:60px;
+	margin-right:60px;
+	font-size:30px;
+	color: red;
+	border-radius:10px;
+	text-align: center;
+	margin-bottom:0px;
+	background-color:#099;
+}
+p.h{
+    float: right;
+	
+	}
+table{
+	font-size:25px;
+	border:10px;
+	PADDING:10px;
+	margin:10px;
+	color:red;
+	background-color:#450;
+	margin-bottom:1%;
+}
+input.text1{
+	font-size:90%;
+	color:green;
+}
+input.but1{
+	border-radius:10px;
+	font-size:18px;
+	color:red;
+	background-color:green;
+	padding:5px;
+	width:65%;
+	
+}
+input.but3{
+	border-radius:10px;
+	font-size:18px;
+	color:red;
+	background-color:blue;
+	padding:5px;
+	width:90%;
+	
+}
+input.but2{
+	border-radius:10px;
+	font-size:18px;
+	color:green;
+	background-color:yellow;
+	padding:5px;	
+}
+td {
+font-size:25px;
+background:pink;
+color:blue;
+}
+#wrapper{
+	text-align:center;
+	float:left;
+	margin: auto;
+	max-width: 320px;
+	width: 99%;
+	padding: 1%;
+	border-radius: 10px;
+	background-attachment: fixed;
+	background-color: #33CC66;
+	background-position:center;
+	margin-bottom:1%;	
+}
+header{
+	padding:0px;
+	text-align:center;
+}
+nav{ text-align:center;
+	margin-left:25%;
+	margin-right:28%;
+	border-radius:10px;
+	
+}
+nav ul{
+	font-weight:bold;
+	text-align:center;
+	list-style:none;
+    margin-left:0%;
+    padding:0;
+}
+
+nav li a{
+	color:blue;
+	border-radius:10px;
+	background:#099;
+	display:block;
+	float:left;
+	padding:10px;
+	text-decoration:none;
+}
+nav a:hover, nav li.active a
+{
+	background-color: #639;
+	color: #C00;
+	border-radius: 10px;
+}
+.clear{
+	clear:both;
+	}
+.left-col{
+	font-size:20px;
+	color:blue;
+	text-align:center;
+	width:90%;
+	background:#A34;
+	float:center;
+	margin-top:2%;
+	border-radius:10px;
+	}
+footer{
+	font-weight:bold;
+	margin-left:85px;
+	margin-top:5px;
+	margin-right:85px;
+	color: red;
+	border-radius:10px;
+	text-align: center;
+	margin-bottom:0px;
+	background-color:#099;
+	}
+</style>
+<script type="text/javascript" >
+function show(shown, hidden) {
+  document.getElementById(shown).style.display='block';
+  document.getElementById(hidden).style.display='none';
+  return false;
+}
+function area(ish)
+{
+	t1=parseFloat(ish.t1.value);
+	t2=parseFloat(ish.t2.value);
+	t3=parseFloat(ish.t3.value);
+	if(ish.t1.value=="")
+		{
+			ish.t1.value="Enter the sides 1";
+		}
+	else if(ish.t2.value=="")
+		{
+			ish.t2.value="Enter the sides 2";
+		}
+	else if(ish.t3.value=="")
+		{
+			ish.t3.value="Enter the sides 3";
+		}
+	else 
+		if(((t1+t2) <= t3) ||((t2+t3)<= t1 )||( (t1+t3)<=t2))
+		{ 
+			ish.t4.value="Invalid Triangle!";
+		}
+		
+			else
+			{		
+				var s=(t1+t2+t3)/2;
+				ish.t4.value= Math.sqrt(s*(s-t1)*(s-t2)*(s-t3));
+			}
+}
+
+function clear1(ish)
+		{	if(ish.t1.value!=parseFloat(ish.t1.value)){
+			ish.t1.value="";
+			}
+		}
+function clear2(ish){
+			if(ish.t2.value!=parseFloat(ish.t2.value)){
+			ish.t2.value="";
+			}
+			}
+function clear3(ish){
+			if(ish.t3.value!=parseFloat(ish.t3.value)){
+			ish.t3.value="";
+			}
+			}
+
+function compute(ish1){
+	if(ish1.t5.value=="")
+		{
+			ish1.t5.value="Enter the Area";
+		}
+		
+		else {
+			T5=parseFloat(ish1.t5.value);
+			ish1.t6.value=(T5)/272;
+			}
+}
+function clear4(ish1){
+			if(ish1.t5.value!=parseFloat(ish1.t5.value)){
+			ish1.t5.value="";
+			}
+			}
+
+function convert(ish1){
+		T6=parseInt(ish1.t6.value);
+		ish1.t8.value=(T6)%20;
+		T7=T6-parseFloat(ish1.t8.value);
+		ish1.t7.value=T7/20;
+		T8=parseFloat(ish1.t6.value)-parseInt(ish1.t6.value);
+		ish1.t9.value=Math.round(T8*272)
+
+}
+		</script>
+		<meta name="viewport" content="width=divce-width,intial-scale=1.0">
+	</head>
+<body >
+	<div id="wrapper">
+	<header><h3>Area Calculator<h3></header>
+		<nav>
+			<ul>
+			<li ><a href="#" onclick="return show('area','convert');">Triangle</a></li>
+			<li ><a href="#" onclick="return show('convert','area');">Convert</a></li>
+			</ul>
+			<div class="clear"></div>
+		</nav>
+
+	<section class="left-col">
+		<div id="area" >
+	    <form name="ish">			
+			Side1:<input class="text1" type="text" name="t1" value="Enter Side 1" onclick="clear1(ish);"/>
+			Side2:<input class="text1" type="text" name="t2" value="Enter Side 2" onclick="clear2(ish);"/>
+			Side3:<input class="text1" type="text" name="t3" value="Enter Side 3" onclick="clear3(ish);"/>
+			<input class="but2" type="reset" value="Reset"/>
+			<input class="but1" type="button" value="Calculate" onclick="area(ish);"/>
+			Area :<input class="text1" type="text" name="t4" />
+		</form>
+		</div>
+		<div id="convert"style="display:none">
+		<form name="ish1">			
+			Area :<input class="text1" type="text" name="t5" value="Enter Area"onclick="clear4(ish1);"/>
+			<input class="but2" type="reset" value="Reset"/>
+			<input class="but1" type="button" value=" Compute " onclick="compute(ish1);"/>
+			Marls:<input type="text" class="text1" name="t6" >
+			<input class="but3" type="button" value=" Calculate " onclick="convert(ish1);"/>
+			Knals:<input class="text1" type="text" name="t7" />
+			Marls:<input class="text1" type="text" name="t8" />
+			Feets::<input class="text1" type="text" name="t9" />
+		</form>
+		</div>
+	</section>
+	<div class="clear"></div>
+	<footer>©Dar</footer>
+	</div>
+</body>
+</html>
